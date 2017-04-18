@@ -30,6 +30,10 @@ ITERS = 200000 # How many generator iterations to train for
 OUTPUT_DIM = 64*64 # Number of pixels in MNIST (28*28)
 NUM_CLASSES = 62; #MNIST
 
+#computer dependent paths
+tom_path = 'fonts.hdf5'
+sahil_path = '../../fonts.hdf5'
+
 lib.print_model_settings(locals().copy())
 
 def make_onehot(labs): #makes 1 hots from integers
@@ -75,25 +79,30 @@ def Generator(n_samples, noise=None, labels=None):
     if MODE == 'wgan':
         output = lib.ops.batchnorm.Batchnorm('Generator.BN1', [0], output)
     output = tf.nn.relu(output)
-    output = tf.reshape(output, [-1, 4*DIM, 4, 4])
+    
+
+    output = lib.ops.linear.Linear('Generator.1',4*4*4*DIM,8*8*4*DIM,output)
+    output = tf.nn.relu(output)
+
+    output = tf.reshape(output, [-1, 4*DIM, 8, 8])
 
 	# C, H, W
 
-    output = lib.ops.deconv2d.Deconv2D('Generator.2', 4*DIM, 2*DIM, 5, output) #2*DIM, 8, 8,
+    output = lib.ops.deconv2d.Deconv2D('Generator.2', 4*DIM, 2*DIM, 5, output) 
     if MODE == 'wgan':
         output = lib.ops.batchnorm.Batchnorm('Generator.BN2', [0,2,3], output)
     output = tf.nn.relu(output)
 
     #output = output[:,:,:7,:7]
 
-    output = lib.ops.deconv2d.Deconv2D('Generator.3', 2*DIM, DIM, 5, output) #DIM, 16, 16
+    output = lib.ops.deconv2d.Deconv2D('Generator.3', 2*DIM, DIM, 5, output)
     if MODE == 'wgan':
         output = lib.ops.batchnorm.Batchnorm('Generator.BN3', [0,2,3], output)
     output = tf.nn.relu(output)
 
-    output = lib.ops.deconv2d.Deconv2D('Generator.4', DIM, DIM, 5, output) #DIM, 32, 32
-    output = tf.nn.relu(output)
-    output = lib.ops.deconv2d.Deconv2D('Generator.5', DIM, 1, 5, output) #1, 64, 64
+    # output = lib.ops.deconv2d.Deconv2D('Generator.4', DIM, DIM, 5, output) #DIM, 32, 32
+    # output = tf.nn.relu(output)
+    output = lib.ops.deconv2d.Deconv2D('Generator.5', DIM, 1, 5, output) 
     output = tf.nn.sigmoid(output)
 
 
@@ -101,6 +110,7 @@ def Generator(n_samples, noise=None, labels=None):
 
 def Discriminator(inputs,labels=None):
     INTER_DIM = 256
+
     lab_biases1 = lib.param('label_biases1',np.zeros(DIM, dtype='float32'))
     lab_wts1 = lib.param('label_weights1',np.float32(np.random.normal(size=[NUM_CLASSES,DIM])))
 
@@ -124,28 +134,24 @@ def Discriminator(inputs,labels=None):
   
     output = lib.ops.conv2d.Conv2D('Discriminator.1',1,DIM,5,output,stride=2) #DIM, 31, 31
     output = LeakyReLU(output)
-    print "output 1: ", output.shape
 
     output = lib.ops.conv2d.Conv2D('Discriminator.2', DIM, 2*DIM, 5, output, stride=2)
-    print "output 2: ", output.shape
     if MODE == 'wgan':
         output = lib.ops.batchnorm.Batchnorm('Discriminator.BN2', [0,2,3], output)
     output = LeakyReLU(output)
     output = lib.ops.conv2d.Conv2D('Discriminator.3', 2*DIM, 4*DIM, 5, output, stride=2)
-    print "output 3: ", output.shape
     if MODE == 'wgan':
         output = lib.ops.batchnorm.Batchnorm('Discriminator.BN3', [0,2,3], output)
     output = LeakyReLU(output)
     
     output = lib.ops.conv2d.Conv2D('Discriminator.4', 4*DIM, 4*DIM, 5, output, stride=2)
     output = LeakyReLU(output)
-    print "output 4: ", output.shape
 
     output = tf.reshape(output, [-1, 4*4*4*DIM])
+
     #CONCAT WITH LABELS
     output = tf.concat([output, lab_out],1)
-
-    output = lib.ops.linear.Linear('Discriminator.4', 4*4*4*2*DIM,INTER_DIM,output)
+    output = lib.ops.linear.Linear('Discriminator.5', 4*4*4*2*DIM,INTER_DIM,output)
     output = LeakyReLU(output)
     output = lib.ops.linear.Linear('Discriminator.Output', INTER_DIM, 1, output)
     return tf.reshape(output, [-1])
@@ -257,7 +263,7 @@ def generate_image(frame, true_dist):
 
 # Dataset iterator
 #train_gen, dev_gen, test_gen = lib.mnist.load(BATCH_SIZE, BATCH_SIZE)
-dataset = Data('../../fonts.hdf5', 128, BATCH_SIZE)
+dataset = Data(tom_path, 128, BATCH_SIZE)
 def inf_train_gen():
     while True:
         for images,targets in train_gen():
@@ -272,7 +278,7 @@ with tf.Session() as session:
         start_time = time.time()
 
         if iteration > 0:
-            _data = dataset.serve_latent()
+            _data = dataset.serve_real()
             _ = session.run(gen_train_op, feed_dict={real_data_lab : _data[1]})
 
         if MODE == 'dcgan':
