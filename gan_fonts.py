@@ -21,18 +21,22 @@ import tflib.plot
 from data import Data
 np.set_printoptions(threshold=np.nan)
 
-MODE = 'wgan-gp' # dcgan, wgan, or wgan-gp
 DIM = 64 # Model dimensionality
 BATCH_SIZE = 50 # Batch size
 CRITIC_ITERS = 5 # For WGAN and WGAN-GP, number of critic iters per gen iter
 LAMBDA = 10 # Gradient penalty lambda hyperparameter
 ITERS = 200000 # How many generator iterations to train for 
-OUTPUT_DIM = 64*64 # Number of pixels in MNIST (28*28)
-NUM_CLASSES = 62; #MNIST
+NUM_CLASSES = 62; #fonts
+SIZE_Z = 512
+SIZE_IM = 64
+OUTPUT_DIM = SIZE_IM*SIZE_IM #size of image
+TRAIN = 0
+NUM_GEN = 100
 
 #computer dependent paths
 tom_path = 'fonts.hdf5'
 sahil_path = '../../fonts.hdf5'
+
 
 lib.print_model_settings(locals().copy())
 
@@ -44,7 +48,7 @@ def make_onehot(labs): #makes 1 hots from integers
 
 def make_image(labels_tensor, labels_np, z):
     np.savetxt('labels.csv',labels_np)
-    return Generator(128, labels=labels_tensor,noise=z)
+    return Generator(SIZE_Z, labels=labels_tensor,noise=z)
 
 def LeakyReLU(x, alpha=0.2):
     return tf.maximum(alpha*x, x)
@@ -71,13 +75,11 @@ def LeakyReLULayer(name, n_in, n_out, inputs):
 
 def Generator(n_samples, noise=None, labels=None):
     if noise is None:
-        noise = tf.random_normal([n_samples, 128])
+        noise = tf.random_normal([n_samples, SIZE_Z])
 
     noise = tf.concat([noise,labels],1) #add the labels to the z vector for input to the generator
-    output = lib.ops.linear.Linear('Generator.Input', 128+NUM_CLASSES, 4*4*4*DIM, noise)
+    output = lib.ops.linear.Linear('Generator.Input', SIZE_Z+NUM_CLASSES, 4*4*4*DIM, noise)
 
-    if MODE == 'wgan':
-        output = lib.ops.batchnorm.Batchnorm('Generator.BN1', [0], output)
     output = tf.nn.relu(output)
     
 
@@ -89,19 +91,12 @@ def Generator(n_samples, noise=None, labels=None):
 	# C, H, W
 
     output = lib.ops.deconv2d.Deconv2D('Generator.2', 4*DIM, 2*DIM, 5, output) 
-    if MODE == 'wgan':
-        output = lib.ops.batchnorm.Batchnorm('Generator.BN2', [0,2,3], output)
     output = tf.nn.relu(output)
 
-    #output = output[:,:,:7,:7]
 
     output = lib.ops.deconv2d.Deconv2D('Generator.3', 2*DIM, DIM, 5, output)
-    if MODE == 'wgan':
-        output = lib.ops.batchnorm.Batchnorm('Generator.BN3', [0,2,3], output)
     output = tf.nn.relu(output)
 
-    # output = lib.ops.deconv2d.Deconv2D('Generator.4', DIM, DIM, 5, output) #DIM, 32, 32
-    # output = tf.nn.relu(output)
     output = lib.ops.deconv2d.Deconv2D('Generator.5', DIM, 1, 5, output) 
     output = tf.nn.sigmoid(output)
 
@@ -130,18 +125,14 @@ def Discriminator(inputs,labels=None):
     lab_out = LeakyReLU(lab_out)
 
 
-    output = tf.reshape(inputs, [-1, 1, 64, 64])
+    output = tf.reshape(inputs, [-1, 1, SIZE_IM, SIZE_IM])
   
     output = lib.ops.conv2d.Conv2D('Discriminator.1',1,DIM,5,output,stride=2) #DIM, 31, 31
     output = LeakyReLU(output)
 
     output = lib.ops.conv2d.Conv2D('Discriminator.2', DIM, 2*DIM, 5, output, stride=2)
-    if MODE == 'wgan':
-        output = lib.ops.batchnorm.Batchnorm('Discriminator.BN2', [0,2,3], output)
     output = LeakyReLU(output)
     output = lib.ops.conv2d.Conv2D('Discriminator.3', 2*DIM, 4*DIM, 5, output, stride=2)
-    if MODE == 'wgan':
-        output = lib.ops.batchnorm.Batchnorm('Discriminator.BN3', [0,2,3], output)
     output = LeakyReLU(output)
     
     output = lib.ops.conv2d.Conv2D('Discriminator.4', 4*DIM, 4*DIM, 5, output, stride=2)
@@ -166,154 +157,127 @@ disc_fake = Discriminator(fake_data,labels=real_data_lab)
 gen_params = lib.params_with_name('Generator')
 disc_params = lib.params_with_name('Discriminator')
 
-if MODE == 'wgan':
-    gen_cost = -tf.reduce_mean(disc_fake)
-    disc_cost = tf.reduce_mean(disc_fake) - tf.reduce_mean(disc_real)
+saver = tf.train.Saver(gen_params)
 
-    gen_train_op = tf.train.RMSPropOptimizer(
-        learning_rate=5e-5
-    ).minimize(gen_cost, var_list=gen_params)
-    disc_train_op = tf.train.RMSPropOptimizer(
-        learning_rate=5e-5
-    ).minimize(disc_cost, var_list=disc_params)
 
-    clip_ops = []
-    for var in lib.params_with_name('Discriminator'):
-        clip_bounds = [-.01, .01]
-        clip_ops.append(
-            tf.assign(
-                var, 
-                tf.clip_by_value(var, clip_bounds[0], clip_bounds[1])
-            )
-        )
-    clip_disc_weights = tf.group(*clip_ops)
 
-elif MODE == 'wgan-gp':
-    gen_cost = -tf.reduce_mean(disc_fake)
-    disc_cost = tf.reduce_mean(disc_fake) - tf.reduce_mean(disc_real)
+gen_cost = -tf.reduce_mean(disc_fake)
+disc_cost = tf.reduce_mean(disc_fake) - tf.reduce_mean(disc_real)
 
-    alpha = tf.random_uniform(
-        shape=[BATCH_SIZE,1], 
-        minval=0.,
-        maxval=1.
-    )
-    differences = fake_data - real_data_ex
-    interpolates = real_data_ex + (alpha*differences)
-    gradients = tf.gradients(Discriminator(interpolates,labels=real_data_lab), [interpolates])[0]
-    slopes = tf.sqrt(tf.reduce_sum(tf.square(gradients), reduction_indices=[1]))
-    gradient_penalty = tf.reduce_mean((slopes-1.)**2)
-    disc_cost += LAMBDA*gradient_penalty
+alpha = tf.random_uniform(
+    shape=[BATCH_SIZE,1], 
+    minval=0.,
+    maxval=1.
+)
+differences = fake_data - real_data_ex
+interpolates = real_data_ex + (alpha*differences)
+gradients = tf.gradients(Discriminator(interpolates,labels=real_data_lab), [interpolates])[0]
+slopes = tf.sqrt(tf.reduce_sum(tf.square(gradients), reduction_indices=[1]))
+gradient_penalty = tf.reduce_mean((slopes-1.)**2)
+disc_cost += LAMBDA*gradient_penalty
 
-    gen_train_op = tf.train.AdamOptimizer(
-        learning_rate=1e-4, 
-        beta1=0.5,
-        beta2=0.9
-    ).minimize(gen_cost, var_list=gen_params)
-    disc_train_op = tf.train.AdamOptimizer(
-        learning_rate=1e-4, 
-        beta1=0.5, 
-        beta2=0.9
-    ).minimize(disc_cost, var_list=disc_params)
+gen_train_op = tf.train.AdamOptimizer(
+    learning_rate=1e-4, 
+    beta1=0.5,
+    beta2=0.9
+).minimize(gen_cost, var_list=gen_params)
+disc_train_op = tf.train.AdamOptimizer(
+    learning_rate=1e-4, 
+    beta1=0.5, 
+    beta2=0.9
+).minimize(disc_cost, var_list=disc_params)
 
-    clip_disc_weights = None
+clip_disc_weights = None
 
-elif MODE == 'dcgan':
-    gen_cost = tf.reduce_mean(tf.nn.sigmoid_cross_entropy_with_logits(
-        disc_fake, 
-        tf.ones_like(disc_fake)
-    ))
 
-    disc_cost =  tf.reduce_mean(tf.nn.sigmoid_cross_entropy_with_logits(
-        disc_fake, 
-        tf.zeros_like(disc_fake)
-    ))
-    disc_cost += tf.reduce_mean(tf.nn.sigmoid_cross_entropy_with_logits(
-        disc_real, 
-        tf.ones_like(disc_real)
-    ))
-    disc_cost /= 2.
-
-    gen_train_op = tf.train.AdamOptimizer(
-        learning_rate=2e-4, 
-        beta1=0.5
-    ).minimize(gen_cost, var_list=gen_params)
-    disc_train_op = tf.train.AdamOptimizer(
-        learning_rate=2e-4, 
-        beta1=0.5
-    ).minimize(disc_cost, var_list=disc_params)
-
-    clip_disc_weights = None
 
 # For saving samples
-fixed_noise = tf.constant(np.random.normal(size=(128, 128)).astype('float32'))
-rl = np.random.randint(0,NUM_CLASSES,size=[128])
+fixed_noise = tf.constant(np.random.normal(size=(SIZE_Z)).astype('float32'))
+fixed_noise = tf.reshape(tf.tile(fixed_noise,tf.constant(NUM_CLASSES,shape=[1])), shape=[NUM_CLASSES,SIZE_Z])
+rl = np.arange(0,NUM_CLASSES-1)
 
-random_lab = tf.constant(make_onehot(rl).astype('float32'),shape=[128,NUM_CLASSES])
+random_lab = tf.constant(make_onehot(rl).astype('float32'),shape=[NUM_CLASSES,NUM_CLASSES])
 fixed_noise_samples = make_image(random_lab, rl, fixed_noise)
 
 
 
-def generate_image(frame, true_dist):
-    samples = session.run(fixed_noise_samples)
-    lib.save_images.save_images(
-        samples.reshape((128, 64, 64)), 
-        'samples_{}.png'.format(frame)
-    )
-
+def generate_image(frame, spec_gen=None):
+	if spec_gen is None: #training
+	    samples = session.run(fixed_noise_samples)
+	    lib.save_images.save_images(
+	        samples.reshape((NUM_CLASSES, SIZE_IM, SIZE_IM)), 
+	        './fonts_samples_r2/samples_{}.png'.format(frame)
+	    )
+	else: #already trained, generate pretty pixtors
+		z = session.run(tf.constant(spec_gen[0]))
+		l = session.run(tf.constant(spec_gen[1]))
+		samples = session.run(Generator(SIZE_Z, labels=l,noise=z))
+		lib.save_images.save_images(
+			samples.reshape((NUM_CLASSES, SIZE_IM, SIZE_IM)),
+			'./fonts_special_gen_r2/samples_{}.png'.format(frame)
+		)
 
 # Dataset iterator
 #train_gen, dev_gen, test_gen = lib.mnist.load(BATCH_SIZE, BATCH_SIZE)
-dataset = Data(tom_path, 128, BATCH_SIZE)
+dataset = Data(sahil_path, SIZE_Z, BATCH_SIZE)
 def inf_train_gen():
     while True:
         for images,targets in train_gen():
             yield [images,make_onehot(targets)]
+if TRAIN == 1: #train the model
+	# Train loop
+	with tf.Session() as session:
 
-# Train loop
-with tf.Session() as session:
+	    session.run(tf.initialize_all_variables())
 
-    session.run(tf.initialize_all_variables())
+	    for iteration in xrange(ITERS):
+	        start_time = time.time()
 
-    for iteration in xrange(ITERS):
-        start_time = time.time()
+	        if iteration > 0:
+	            _data = dataset.serve_real()
+	            _ = session.run(gen_train_op, feed_dict={real_data_lab : _data[1]})
 
-        if iteration > 0:
-            _data = dataset.serve_real()
-            _ = session.run(gen_train_op, feed_dict={real_data_lab : _data[1]})
+	        
+	        disc_iters = CRITIC_ITERS
 
-        if MODE == 'dcgan':
-            disc_iters = 1
-        else:
-            disc_iters = CRITIC_ITERS
-        for i in xrange(disc_iters):
-            _data = dataset.serve_real()
-            _disc_cost, _ = session.run(
-                [disc_cost, disc_train_op],
-                feed_dict={real_data_ex: _data[0], real_data_lab: _data[1]}
-            )
-            if clip_disc_weights is not None:
-                _ = session.run(clip_disc_weights)
+	        for i in xrange(disc_iters):
+	            _data = dataset.serve_real()
+	            _disc_cost, _ = session.run(
+	                [disc_cost, disc_train_op],
+	                feed_dict={real_data_ex: _data[0], real_data_lab: _data[1]}
+	            )
+	            if clip_disc_weights is not None:
+	                _ = session.run(clip_disc_weights)
 
-        lib.plot.plot('train disc cost', _disc_cost)
-        lib.plot.plot('time', time.time() - start_time)
+	        lib.plot.plot('train disc cost', _disc_cost)
+	        lib.plot.plot('time', time.time() - start_time)
 
-        # Calculate dev loss and generate samples every 100 iters
-        if iteration % 100 == 99:
-            dev_disc_costs = []
-            #for images,labs in dev_gen():
+	        # Calculate dev loss and generate samples every 100 iters
+	        if iteration % 100 == 99:
+	            dev_disc_costs = []
+	            #for images,labs in dev_gen():
 
-            #    _dev_disc_cost = session.run(
-            #        disc_cost, 
-            #        feed_dict={real_data_ex: images, real_data_lab : make_onehot(labs)}
-            #    )
-            #    dev_disc_costs.append(_dev_disc_cost)
-            #lib.plot.plot('dev disc cost', np.mean(dev_disc_costs))
-            print iteration
-            generate_image(iteration, _data)
+	            #    _dev_disc_cost = session.run(
+	            #        disc_cost, 
+	            #        feed_dict={real_data_ex: images, real_data_lab : make_onehot(labs)}
+	            #    )
+	            #    dev_disc_costs.append(_dev_disc_cost)
+	            #lib.plot.plot('dev disc cost', np.mean(dev_disc_costs))
+	            print iteration
+	            generate_image(iteration)
 
+	        if iteration % 1000 == 999:
+	            saver.save(session, './fonts_checkpoints_r2/', global_step=iteration)
+	        # Write logs every 100 iters
+	        #if (iteration < 5) or (iteration % 100 == 99):
+	        #    lib.plot.flush()
 
-        # Write logs every 100 iters
-        #if (iteration < 5) or (iteration % 100 == 99):
-        #    lib.plot.flush()
-
-        #lib.plot.tick()
+	        #lib.plot.tick()
+else: #evaluate latent vectors
+	with tf.Session() as session:
+		session.run(tf.initialize_all_variables())
+		saver.restore(session, './fonts_checkpoints_r2/-37999')
+		for i in range(NUM_GEN):
+			latent = np.reshape(np.tile(np.random.normal(0,1,[SIZE_Z]),NUM_CLASSES),(NUM_CLASSES,SIZE_Z)).astype('float32')
+			labels = make_onehot(np.arange(0,NUM_CLASSES)).astype('float32')
+			generate_image(i, spec_gen=[latent,labels])

@@ -1,0 +1,9 @@
+fonts_checkpoints/
+fonts_checkpoints_r2/
+fonts_samples/
+fonts_samples_r2/
+fonts_special_gen/
+fonts_special_gen_r2/
+mnist_checkpoints/
+mnist_samples/
+sim_results_zsize128/

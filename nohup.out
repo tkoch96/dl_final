@@ -1,0 +1,379 @@
+I tensorflow/stream_executor/dso_loader.cc:135] successfully opened CUDA library libcublas.so.8.0 locally
+I tensorflow/stream_executor/dso_loader.cc:135] successfully opened CUDA library libcudnn.so.5 locally
+I tensorflow/stream_executor/dso_loader.cc:135] successfully opened CUDA library libcufft.so.8.0 locally
+I tensorflow/stream_executor/dso_loader.cc:135] successfully opened CUDA library libcuda.so.1 locally
+I tensorflow/stream_executor/dso_loader.cc:135] successfully opened CUDA library libcurand.so.8.0 locally
+W tensorflow/core/platform/cpu_feature_guard.cc:45] The TensorFlow library wasn't compiled to use SSE3 instructions, but these are available on your machine and could speed up CPU computations.
+W tensorflow/core/platform/cpu_feature_guard.cc:45] The TensorFlow library wasn't compiled to use SSE4.1 instructions, but these are available on your machine and could speed up CPU computations.
+W tensorflow/core/platform/cpu_feature_guard.cc:45] The TensorFlow library wasn't compiled to use SSE4.2 instructions, but these are available on your machine and could speed up CPU computations.
+I tensorflow/stream_executor/cuda/cuda_gpu_executor.cc:910] successful NUMA node read from SysFS had negative value (-1), but there must be at least one NUMA node, so returning NUMA node zero
+I tensorflow/core/common_runtime/gpu/gpu_device.cc:885] Found device 0 with properties: 
+name: Tesla K40c
+major: 3 minor: 5 memoryClockRate (GHz) 0.745
+pciBusID 0000:04:00.0
+Total memory: 11.17GiB
+Free memory: 11.10GiB
+I tensorflow/core/common_runtime/gpu/gpu_device.cc:906] DMA: 0 
+I tensorflow/core/common_runtime/gpu/gpu_device.cc:916] 0:   Y 
+I tensorflow/core/common_runtime/gpu/gpu_device.cc:975] Creating TensorFlow device (/gpu:0) -> (device: 0, name: Tesla K40c, pci bus id: 0000:04:00.0)
+WARNING:tensorflow:From gan_fonts.py:269: initialize_all_variables (from tensorflow.python.ops.variables) is deprecated and will be removed after 2017-03-02.
+Instructions for updating:
+Use `tf.global_variables_initializer` instead.
+I tensorflow/stream_executor/dso_loader.cc:135] successfully opened CUDA library libcublas.so.8.0 locally
+I tensorflow/stream_executor/dso_loader.cc:135] successfully opened CUDA library libcudnn.so.5 locally
+I tensorflow/stream_executor/dso_loader.cc:135] successfully opened CUDA library libcufft.so.8.0 locally
+I tensorflow/stream_executor/dso_loader.cc:135] successfully opened CUDA library libcuda.so.1 locally
+I tensorflow/stream_executor/dso_loader.cc:135] successfully opened CUDA library libcurand.so.8.0 locally
+W tensorflow/core/platform/cpu_feature_guard.cc:45] The TensorFlow library wasn't compiled to use SSE3 instructions, but these are available on your machine and could speed up CPU computations.
+W tensorflow/core/platform/cpu_feature_guard.cc:45] The TensorFlow library wasn't compiled to use SSE4.1 instructions, but these are available on your machine and could speed up CPU computations.
+W tensorflow/core/platform/cpu_feature_guard.cc:45] The TensorFlow library wasn't compiled to use SSE4.2 instructions, but these are available on your machine and could speed up CPU computations.
+I tensorflow/stream_executor/cuda/cuda_gpu_executor.cc:910] successful NUMA node read from SysFS had negative value (-1), but there must be at least one NUMA node, so returning NUMA node zero
+I tensorflow/core/common_runtime/gpu/gpu_device.cc:885] Found device 0 with properties: 
+name: Tesla K40c
+major: 3 minor: 5 memoryClockRate (GHz) 0.745
+pciBusID 0000:04:00.0
+Total memory: 11.17GiB
+Free memory: 11.10GiB
+I tensorflow/core/common_runtime/gpu/gpu_device.cc:906] DMA: 0 
+I tensorflow/core/common_runtime/gpu/gpu_device.cc:916] 0:   Y 
+I tensorflow/core/common_runtime/gpu/gpu_device.cc:975] Creating TensorFlow device (/gpu:0) -> (device: 0, name: Tesla K40c, pci bus id: 0000:04:00.0)
+WARNING:tensorflow:From gan_fonts.py:275: initialize_all_variables (from tensorflow.python.ops.variables) is deprecated and will be removed after 2017-03-02.
+Instructions for updating:
+Use `tf.global_variables_initializer` instead.
+I tensorflow/stream_executor/dso_loader.cc:135] successfully opened CUDA library libcublas.so.8.0 locally
+I tensorflow/stream_executor/dso_loader.cc:135] successfully opened CUDA library libcudnn.so.5 locally
+I tensorflow/stream_executor/dso_loader.cc:135] successfully opened CUDA library libcufft.so.8.0 locally
+I tensorflow/stream_executor/dso_loader.cc:135] successfully opened CUDA library libcuda.so.1 locally
+I tensorflow/stream_executor/dso_loader.cc:135] successfully opened CUDA library libcurand.so.8.0 locally
+W tensorflow/core/platform/cpu_feature_guard.cc:45] The TensorFlow library wasn't compiled to use SSE3 instructions, but these are available on your machine and could speed up CPU computations.
+W tensorflow/core/platform/cpu_feature_guard.cc:45] The TensorFlow library wasn't compiled to use SSE4.1 instructions, but these are available on your machine and could speed up CPU computations.
+W tensorflow/core/platform/cpu_feature_guard.cc:45] The TensorFlow library wasn't compiled to use SSE4.2 instructions, but these are available on your machine and could speed up CPU computations.
+I tensorflow/stream_executor/cuda/cuda_gpu_executor.cc:910] successful NUMA node read from SysFS had negative value (-1), but there must be at least one NUMA node, so returning NUMA node zero
+I tensorflow/core/common_runtime/gpu/gpu_device.cc:885] Found device 0 with properties: 
+name: Tesla K40c
+major: 3 minor: 5 memoryClockRate (GHz) 0.745
+pciBusID 0000:04:00.0
+Total memory: 11.17GiB
+Free memory: 11.10GiB
+I tensorflow/core/common_runtime/gpu/gpu_device.cc:906] DMA: 0 
+I tensorflow/core/common_runtime/gpu/gpu_device.cc:916] 0:   Y 
+I tensorflow/core/common_runtime/gpu/gpu_device.cc:975] Creating TensorFlow device (/gpu:0) -> (device: 0, name: Tesla K40c, pci bus id: 0000:04:00.0)
+WARNING:tensorflow:From gan_fonts.py:278: initialize_all_variables (from tensorflow.python.ops.variables) is deprecated and will be removed after 2017-03-02.
+Instructions for updating:
+Use `tf.global_variables_initializer` instead.
+I tensorflow/stream_executor/dso_loader.cc:135] successfully opened CUDA library libcublas.so.8.0 locally
+I tensorflow/stream_executor/dso_loader.cc:135] successfully opened CUDA library libcudnn.so.5 locally
+I tensorflow/stream_executor/dso_loader.cc:135] successfully opened CUDA library libcufft.so.8.0 locally
+I tensorflow/stream_executor/dso_loader.cc:135] successfully opened CUDA library libcuda.so.1 locally
+I tensorflow/stream_executor/dso_loader.cc:135] successfully opened CUDA library libcurand.so.8.0 locally
+W tensorflow/core/platform/cpu_feature_guard.cc:45] The TensorFlow library wasn't compiled to use SSE3 instructions, but these are available on your machine and could speed up CPU computations.
+W tensorflow/core/platform/cpu_feature_guard.cc:45] The TensorFlow library wasn't compiled to use SSE4.1 instructions, but these are available on your machine and could speed up CPU computations.
+W tensorflow/core/platform/cpu_feature_guard.cc:45] The TensorFlow library wasn't compiled to use SSE4.2 instructions, but these are available on your machine and could speed up CPU computations.
+I tensorflow/stream_executor/cuda/cuda_gpu_executor.cc:910] successful NUMA node read from SysFS had negative value (-1), but there must be at least one NUMA node, so returning NUMA node zero
+I tensorflow/core/common_runtime/gpu/gpu_device.cc:885] Found device 0 with properties: 
+name: Tesla K40c
+major: 3 minor: 5 memoryClockRate (GHz) 0.745
+pciBusID 0000:04:00.0
+Total memory: 11.17GiB
+Free memory: 11.10GiB
+I tensorflow/core/common_runtime/gpu/gpu_device.cc:906] DMA: 0 
+I tensorflow/core/common_runtime/gpu/gpu_device.cc:916] 0:   Y 
+I tensorflow/core/common_runtime/gpu/gpu_device.cc:975] Creating TensorFlow device (/gpu:0) -> (device: 0, name: Tesla K40c, pci bus id: 0000:04:00.0)
+WARNING:tensorflow:From gan_mnist.py:257: initialize_all_variables (from tensorflow.python.ops.variables) is deprecated and will be removed after 2017-03-02.
+Instructions for updating:
+Use `tf.global_variables_initializer` instead.
+Uppercase local vars:
+	BATCH_SIZE: 50
+	CRITIC_ITERS: 5
+	DIM: 64
+	ITERS: 200000
+	LAMBDA: 10
+	MODE: wgan-gp
+	NUM_CLASSES: 10
+	OUTPUT_DIM: 784
+iter 0	train disc cost	-0.791379213333	time	0.921030044556
+iter 1	train disc cost	-7.25060606003	time	0.375072002411
+iter 2	train disc cost	-10.9497537613	time	0.325088977814
+iter 3	train disc cost	-12.9896974564	time	0.32533288002
+iter 4	train disc cost	-13.5456180573	time	0.325206041336
+iter 99	train disc cost	-10.3166027069	dev disc cost	-7.87746715546	time	0.325894303071
+iter 199	train disc cost	-6.46403980255	dev disc cost	-5.84429311752	time	0.327590837479
+iter 299	train disc cost	-5.3448882103	dev disc cost	-5.06045722961	time	0.325889050961
+iter 399	train disc cost	-4.71040916443	dev disc cost	-4.56517601013	time	0.327073895931
+iter 499	train disc cost	-4.33593320847	dev disc cost	-4.21342611313	time	0.326048595905
+iter 599	train disc cost	-4.0713634491	dev disc cost	-3.99352908134	time	0.327164061069
+iter 699	train disc cost	-3.90856051445	dev disc cost	-3.85217952728	time	0.327206053734
+iter 799	train disc cost	-3.72906899452	dev disc cost	-3.69527983665	time	0.326194090843
+iter 899	train disc cost	-3.68709778786	dev disc cost	-3.58130168915	time	0.32715544939
+iter 999	train disc cost	-3.59996056557	dev disc cost	-3.55873179436	time	0.326128942966
+iter 1099	train disc cost	-3.55939602852	dev disc cost	-3.50614261627	time	0.327243232727
+iter 1199	train disc cost	-3.51387810707	dev disc cost	-3.44851326942	time	0.327364735603
+iter 1299	train disc cost	-3.46325755119	dev disc cost	-3.45635247231	time	0.326288983822
+iter 1399	train disc cost	-3.44422888756	dev disc cost	-3.3561296463	time	0.327213819027
+iter 1499	train disc cost	-3.39054465294	dev disc cost	-3.34911990166	time	0.326350338459
+iter 1599	train disc cost	-3.37053203583	dev disc cost	-3.23408579826	time	0.327281517982
+iter 1699	train disc cost	-3.31460285187	dev disc cost	-3.23095059395	time	0.327349684238
+iter 1799	train disc cost	-3.24802160263	dev disc cost	-3.1592669487	time	0.326346302032
+iter 1899	train disc cost	-3.26411366463	dev disc cost	-3.17200279236	time	0.327263698578
+iter 1999	train disc cost	-3.18176674843	dev disc cost	-3.06174039841	time	0.326319651604
+iter 2099	train disc cost	-3.12582588196	dev disc cost	-3.0154709816	time	0.327245852947
+iter 2199	train disc cost	-3.04563546181	dev disc cost	-2.94219970703	time	0.327318065166
+iter 2299	train disc cost	-3.04455971718	dev disc cost	-2.96544933319	time	0.326332449913
+iter 2399	train disc cost	-2.93756175041	dev disc cost	-2.84403800964	time	0.327356290817
+iter 2499	train disc cost	-2.89761996269	dev disc cost	-2.77853798866	time	0.326199421883
+iter 2599	train disc cost	-2.86416077614	dev disc cost	-2.77247691154	time	0.327322020531
+iter 2699	train disc cost	-2.82261586189	dev disc cost	-2.66406369209	time	0.327146360874
+iter 2799	train disc cost	-2.72728443146	dev disc cost	-2.64502310753	time	0.326387989521
+iter 2899	train disc cost	-2.72353219986	dev disc cost	-2.5821416378	time	0.32725092411
+iter 2999	train disc cost	-2.6654458046	dev disc cost	-2.46493005753	time	0.326193408966
+iter 3099	train disc cost	-2.58583641052	dev disc cost	-2.5269844532	time	0.327322382927
+iter 3199	train disc cost	-2.52464652061	dev disc cost	-2.41032385826	time	0.327267985344
+iter 3299	train disc cost	-2.4429693222	dev disc cost	-2.36471176147	time	0.326370177269
+iter 3399	train disc cost	-2.38913249969	dev disc cost	-2.342492342	time	0.327228319645
+iter 3499	train disc cost	-2.39046311378	dev disc cost	-2.28918457031	time	0.326231970787
+iter 3599	train disc cost	-2.34595918655	dev disc cost	-2.16804170609	time	0.327344181538
+iter 3699	train disc cost	-2.3056871891	dev disc cost	-2.09545660019	time	0.327399682999
+iter 3799	train disc cost	-2.2390024662	dev disc cost	-2.20504260063	time	0.326374709606
+iter 3899	train disc cost	-2.19600486755	dev disc cost	-2.05047082901	time	0.327361516953
+iter 3999	train disc cost	-2.08391499519	dev disc cost	-2.01245522499	time	0.326310865879
+iter 4099	train disc cost	-2.08266639709	dev disc cost	-1.94594573975	time	0.327324030399
+iter 4199	train disc cost	-2.0273001194	dev disc cost	-1.92917072773	time	0.327329549789
+iter 4299	train disc cost	-1.97713458538	dev disc cost	-1.8436242342	time	0.326385040283
+iter 4399	train disc cost	-1.92952442169	dev disc cost	-1.81016993523	time	0.327183890343
+iter 4499	train disc cost	-1.86627364159	dev disc cost	-1.8312869072	time	0.326234080791
+iter 4599	train disc cost	-1.85899305344	dev disc cost	-1.72767686844	time	0.327378196716
+iter 4699	train disc cost	-1.79067051411	dev disc cost	-1.69999754429	time	0.327378644943
+iter 4799	train disc cost	-1.78143930435	dev disc cost	-1.69240415096	time	0.326258864403
+iter 4899	train disc cost	-1.72281324863	dev disc cost	-1.67786836624	time	0.32735973835
+iter 4999	train disc cost	-1.71870267391	dev disc cost	-1.63494753838	time	0.32634114027
+iter 5099	train disc cost	-1.6514749527	dev disc cost	-1.52983427048	time	0.327181501389
+iter 5199	train disc cost	-1.66026449203	dev disc cost	-1.55649721622	time	0.32731760025
+iter 5299	train disc cost	-1.60212779045	dev disc cost	-1.53183960915	time	0.326385130882
+iter 5399	train disc cost	-1.57892620564	dev disc cost	-1.55588197708	time	0.327291483879
+iter 5499	train disc cost	-1.53871357441	dev disc cost	-1.4108710289	time	0.326274106503
+iter 5599	train disc cost	-1.52493011951	dev disc cost	-1.42916750908	time	0.327248907089
+iter 5699	train disc cost	-1.48766875267	dev disc cost	-1.47924256325	time	0.327380814552
+iter 5799	train disc cost	-1.48155069351	dev disc cost	-1.48422241211	time	0.326490831375
+iter 5899	train disc cost	-1.49662458897	dev disc cost	-1.38261258602	time	0.327232167721
+iter 5999	train disc cost	-1.4166572094	dev disc cost	-1.29535365105	time	0.326569592953
+iter 6099	train disc cost	-1.41418135166	dev disc cost	-1.36316084862	time	0.327908861637
+iter 6199	train disc cost	-1.38969242573	dev disc cost	-1.29188418388	time	0.327513418198
+iter 6299	train disc cost	-1.36963939667	dev disc cost	-1.36244785786	time	0.326306705475
+iter 6399	train disc cost	-1.34981298447	dev disc cost	-1.32002854347	time	0.327383935452
+iter 6499	train disc cost	-1.33388340473	dev disc cost	-1.25907552242	time	0.326335804462
+iter 6599	train disc cost	-1.34542810917	dev disc cost	-1.26742982864	time	0.327285671234
+iter 6699	train disc cost	-1.3128619194	dev disc cost	-1.2117433548	time	0.327301273346
+iter 6799	train disc cost	-1.27151179314	dev disc cost	-1.2935577631	time	0.32627818346
+iter 6899	train disc cost	-1.23565816879	dev disc cost	-1.24445366859	time	0.327320210934
+iter 6999	train disc cost	-1.24776887894	dev disc cost	-1.13162434101	time	0.326366677284
+iter 7099	train disc cost	-1.22900533676	dev disc cost	-1.15861785412	time	0.327275187969
+iter 7199	train disc cost	-1.18971288204	dev disc cost	-1.16464567184	time	0.327356786728
+iter 7299	train disc cost	-1.18294715881	dev disc cost	-1.14729428291	time	0.326313185692
+iter 7399	train disc cost	-1.14710521698	dev disc cost	-1.08399736881	time	0.327346615791
+iter 7499	train disc cost	-1.17138910294	dev disc cost	-1.06448209286	time	0.326218984127
+iter 7599	train disc cost	-1.14875030518	dev disc cost	-1.02235972881	time	0.327244796753
+iter 7699	train disc cost	-1.14758145809	dev disc cost	-1.13198816776	time	0.327362468243
+iter 7799	train disc cost	-1.11884152889	dev disc cost	-1.16481387615	time	0.32617454052
+iter 7899	train disc cost	-1.13695216179	dev disc cost	-1.02913820744	time	0.327339074612
+iter 7999	train disc cost	-1.09674263	dev disc cost	-1.04172945023	time	0.326348247528
+iter 8099	train disc cost	-1.10174357891	dev disc cost	-0.986979842186	time	0.327245163918
+iter 8199	train disc cost	-1.11565709114	dev disc cost	-1.00011301041	time	0.327268571854
+iter 8299	train disc cost	-1.10628068447	dev disc cost	-0.963492274284	time	0.326333191395
+iter 8399	train disc cost	-1.05388522148	dev disc cost	-0.948128938675	time	0.327255055904
+iter 8499	train disc cost	-1.0708630085	dev disc cost	-1.0351088047	time	0.326236300468
+iter 8599	train disc cost	-1.04505264759	dev disc cost	-0.944979429245	time	0.327278504372
+iter 8699	train disc cost	-1.00729620457	dev disc cost	-0.910542011261	time	0.327272126675
+iter 8799	train disc cost	-1.00789904594	dev disc cost	-0.927811741829	time	0.326256642342
+iter 8899	train disc cost	-1.02612352371	dev disc cost	-0.968672811985	time	0.327148888111
+iter 8999	train disc cost	-1.00343847275	dev disc cost	-0.958593845367	time	0.326187548637
+iter 9099	train disc cost	-1.03040838242	dev disc cost	-0.88404583931	time	0.327372472286
+iter 9199	train disc cost	-0.99154073	dev disc cost	-0.975612342358	time	0.327301094532
+iter 9299	train disc cost	-0.988976716995	dev disc cost	-0.890360176563	time	0.32653208971
+iter 9399	train disc cost	-1.00765144825	dev disc cost	-0.927673637867	time	0.327182302475
+iter 9499	train disc cost	-0.977716267109	dev disc cost	-0.902886807919	time	0.326332798004
+iter 9599	train disc cost	-0.955373942852	dev disc cost	-0.99685972929	time	0.32724203825
+iter 9699	train disc cost	-0.966018855572	dev disc cost	-0.762385427952	time	0.32719050169
+iter 9799	train disc cost	-0.96009606123	dev disc cost	-0.89607322216	time	0.326155838966
+iter 9899	train disc cost	-0.90643030405	dev disc cost	-0.947435736656	time	0.327339494228
+iter 9999	train disc cost	-0.948829889297	dev disc cost	-0.753569185734	time	0.32624461174
+iter 10099	train disc cost	-0.939753055573	dev disc cost	-0.839789628983	time	0.327328045368
+iter 10199	train disc cost	-0.945387423038	dev disc cost	-0.798298239708	time	0.327291865349
+iter 10299	train disc cost	-0.928658425808	dev disc cost	-0.812789082527	time	0.326228911877
+iter 10399	train disc cost	-0.927179098129	dev disc cost	-0.859266221523	time	0.327215602398
+iter 10499	train disc cost	-0.891386926174	dev disc cost	-0.840064227581	time	0.326177325249
+iter 10599	train disc cost	-0.909128189087	dev disc cost	-0.947320222855	time	0.327141532898
+iter 10699	train disc cost	-0.904400646687	dev disc cost	-0.99798566103	time	0.327338199615
+iter 10799	train disc cost	-0.918667733669	dev disc cost	-0.786109685898	time	0.326352744102
+iter 10899	train disc cost	-0.88948404789	dev disc cost	-0.745421528816	time	0.327442648411
+iter 10999	train disc cost	-0.879255235195	dev disc cost	-0.834666669369	time	0.326572055817
+iter 11099	train disc cost	-0.88063031435	dev disc cost	-0.711331784725	time	0.327119531631
+iter 11199	train disc cost	-0.818774700165	dev disc cost	-0.732939064503	time	0.327406349182
+iter 11299	train disc cost	-0.873412370682	dev disc cost	-0.868827044964	time	0.326203587055
+iter 11399	train disc cost	-0.849305927753	dev disc cost	-0.784328460693	time	0.32718180418
+iter 11499	train disc cost	-0.836572110653	dev disc cost	-0.684387981892	time	0.326216340065
+iter 11599	train disc cost	-0.828793346882	dev disc cost	-0.742010176182	time	0.327303659916
+iter 11699	train disc cost	-0.802164614201	dev disc cost	-0.723205327988	time	0.327216191292
+iter 11799	train disc cost	-0.826670706272	dev disc cost	-0.747164607048	time	0.32632735014
+iter 11899	train disc cost	-0.825405597687	dev disc cost	-0.74042570591	time	0.327220439911
+iter 11999	train disc cost	-0.822601139545	dev disc cost	-0.772927999496	time	0.3261369133
+iter 12099	train disc cost	-0.836667120457	dev disc cost	-0.743377506733	time	0.327200753689
+iter 12199	train disc cost	-0.815539598465	dev disc cost	-0.742962658405	time	0.327174730301
+iter 12299	train disc cost	-0.819045305252	dev disc cost	-0.750523090363	time	0.326272130013
+iter 12399	train disc cost	-0.800858438015	dev disc cost	-0.845776736736	time	0.327373642921
+iter 12499	train disc cost	-0.804572343826	dev disc cost	-0.676711797714	time	0.326204793453
+iter 12599	train disc cost	-0.823533833027	dev disc cost	-0.677586972713	time	0.327225875854
+iter 12699	train disc cost	-0.812550365925	dev disc cost	-0.643201470375	time	0.32728648901
+iter 12799	train disc cost	-0.805022120476	dev disc cost	-0.808924853802	time	0.326287002563
+iter 12899	train disc cost	-0.750107586384	dev disc cost	-0.777522861958	time	0.327337825298
+iter 12999	train disc cost	-0.800248384476	dev disc cost	-0.634539663792	time	0.326276636124
+iter 13099	train disc cost	-0.765244007111	dev disc cost	-0.851773381233	time	0.327385857105
+iter 13199	trainI tensorflow/stream_executor/dso_loader.cc:135] successfully opened CUDA library libcublas.so.8.0 locally
+I tensorflow/stream_executor/dso_loader.cc:135] successfully opened CUDA library libcudnn.so.5 locally
+I tensorflow/stream_executor/dso_loader.cc:135] successfully opened CUDA library libcufft.so.8.0 locally
+I tensorflow/stream_executor/dso_loader.cc:135] successfully opened CUDA library libcuda.so.1 locally
+I tensorflow/stream_executor/dso_loader.cc:135] successfully opened CUDA library libcurand.so.8.0 locally
+W tensorflow/core/platform/cpu_feature_guard.cc:45] The TensorFlow library wasn't compiled to use SSE3 instructions, but these are available on your machine and could speed up CPU computations.
+W tensorflow/core/platform/cpu_feature_guard.cc:45] The TensorFlow library wasn't compiled to use SSE4.1 instructions, but these are available on your machine and could speed up CPU computations.
+W tensorflow/core/platform/cpu_feature_guard.cc:45] The TensorFlow library wasn't compiled to use SSE4.2 instructions, but these are available on your machine and could speed up CPU computations.
+I tensorflow/stream_executor/cuda/cuda_gpu_executor.cc:910] successful NUMA node read from SysFS had negative value (-1), but there must be at least one NUMA node, so returning NUMA node zero
+I tensorflow/core/common_runtime/gpu/gpu_device.cc:885] Found device 0 with properties: 
+name: Tesla K40c
+major: 3 minor: 5 memoryClockRate (GHz) 0.745
+pciBusID 0000:04:00.0
+Total memory: 11.17GiB
+Free memory: 11.10GiB
+I tensorflow/core/common_runtime/gpu/gpu_device.cc:906] DMA: 0 
+I tensorflow/core/common_runtime/gpu/gpu_device.cc:916] 0:   Y 
+I tensorflow/core/common_runtime/gpu/gpu_device.cc:975] Creating TensorFlow device (/gpu:0) -> (device: 0, name: Tesla K40c, pci bus id: 0000:04:00.0)
+WARNING:tensorflow:From gan_fonts.py:281: initialize_all_variables (from tensorflow.python.ops.variables) is deprecated and will be removed after 2017-03-02.
+Instructions for updating:
+Use `tf.global_variables_initializer` instead.
+I tensorflow/stream_executor/dso_loader.cc:135] successfully opened CUDA library libcublas.so.8.0 locally
+I tensorflow/stream_executor/dso_loader.cc:135] successfully opened CUDA library libcudnn.so.5 locally
+I tensorflow/stream_executor/dso_loader.cc:135] successfully opened CUDA library libcufft.so.8.0 locally
+I tensorflow/stream_executor/dso_loader.cc:135] successfully opened CUDA library libcuda.so.1 locally
+I tensorflow/stream_executor/dso_loader.cc:135] successfully opened CUDA library libcurand.so.8.0 locally
+Uppercase local vars:
+	BATCH_SIZE: 50
+	CRITIC_ITERS: 5
+	DIM: 64
+	ITERS: 200000
+	LAMBDA: 10
+	NUM_CLASSES: 62
+	NUM_GEN: 100
+	OUTPUT_DIM: 4096
+	SIZE_IM: 64
+	SIZE_Z: 512
+	TRAIN: 1
+Traceback (most recent call last):
+  File "gan_fonts.py", line 152, in <module>
+    fake_data = Generator(BATCH_SIZE,labels=real_data_lab)
+  File "gan_fonts.py", line 86, in Generator
+    output = lib.ops.linear.Linear('Generator.1',4*4*4*DIM,8*8*4*DIM,output)
+  File "/home/deeplearner/Documents/Other/Wgan/dl_final/tflib/ops/linear.py", line 59, in Linear
+    (input_dim, output_dim)
+  File "/home/deeplearner/Documents/Other/Wgan/dl_final/tflib/ops/linear.py", line 45, in uniform
+    size=size
+KeyboardInterrupt
+I tensorflow/stream_executor/dso_loader.cc:135] successfully opened CUDA library libcublas.so.8.0 locally
+I tensorflow/stream_executor/dso_loader.cc:135] successfully opened CUDA library libcudnn.so.5 locally
+I tensorflow/stream_executor/dso_loader.cc:135] successfully opened CUDA library libcufft.so.8.0 locally
+I tensorflow/stream_executor/dso_loader.cc:135] successfully opened CUDA library libcuda.so.1 locally
+I tensorflow/stream_executor/dso_loader.cc:135] successfully opened CUDA library libcurand.so.8.0 locally
+W tensorflow/core/platform/cpu_feature_guard.cc:45] The TensorFlow library wasn't compiled to use SSE3 instructions, but these are available on your machine and could speed up CPU computations.
+W tensorflow/core/platform/cpu_feature_guard.cc:45] The TensorFlow library wasn't compiled to use SSE4.1 instructions, but these are available on your machine and could speed up CPU computations.
+W tensorflow/core/platform/cpu_feature_guard.cc:45] The TensorFlow library wasn't compiled to use SSE4.2 instructions, but these are available on your machine and could speed up CPU computations.
+I tensorflow/stream_executor/cuda/cuda_gpu_executor.cc:910] successful NUMA node read from SysFS had negative value (-1), but there must be at least one NUMA node, so returning NUMA node zero
+I tensorflow/core/common_runtime/gpu/gpu_device.cc:885] Found device 0 with properties: 
+name: Tesla K40c
+major: 3 minor: 5 memoryClockRate (GHz) 0.745
+pciBusID 0000:04:00.0
+Total memory: 11.17GiB
+Free memory: 11.10GiB
+I tensorflow/core/common_runtime/gpu/gpu_device.cc:906] DMA: 0 
+I tensorflow/core/common_runtime/gpu/gpu_device.cc:916] 0:   Y 
+I tensorflow/core/common_runtime/gpu/gpu_device.cc:975] Creating TensorFlow device (/gpu:0) -> (device: 0, name: Tesla K40c, pci bus id: 0000:04:00.0)
+WARNING:tensorflow:From gan_fonts.py:231: initialize_all_variables (from tensorflow.python.ops.variables) is deprecated and will be removed after 2017-03-02.
+Instructions for updating:
+Use `tf.global_variables_initializer` instead.
+Uppercase local vars:
+	BATCH_SIZE: 50
+	CRITIC_ITERS: 5
+	DIM: 64
+	ITERS: 200000
+	LAMBDA: 10
+	NUM_CLASSES: 62
+	NUM_GEN: 100
+	OUTPUT_DIM: 4096
+	SIZE_IM: 64
+	SIZE_Z: 512
+	TRAIN: 1
+99
+Traceback (most recent call last):
+  File "gan_fonts.py", line 267, in <module>
+    generate_image(iteration)
+  File "gan_fonts.py", line 209, in generate_image
+    './fonts_samples_r2/samples_{}.png'.format(frame)
+  File "/home/deeplearner/Documents/Other/Wgan/dl_final/tflib/save_images.py", line 37, in save_images
+    imsave(save_path, img)
+  File "/home/deeplearner/Documents/Other/Wgan/local/lib/python2.7/site-packages/scipy/misc/pilutil.py", line 199, in imsave
+    im.save(name)
+  File "/home/deeplearner/Documents/Other/Wgan/local/lib/python2.7/site-packages/PIL/Image.py", line 1823, in save
+    fp = builtins.open(filename, "w+b")
+IOError: [Errno 2] No such file or directory: './fonts_samples_r2/samples_99.png'
+Traceback (most recent call last):
+  File "gan_fonts.py", line 6, in <module>
+    import matplotlib
+ImportError: No module named matplotlib
+Traceback (most recent call last):
+  File "gan_fonts.py", line 6, in <module>
+    import matplotlib
+ImportError: No module named matplotlib
+Traceback (most recent call last):
+  File "gan_fonts.py", line 6, in <module>
+    import matplotlib
+ImportError: No module named matplotlib
+Traceback (most recent call last):
+  File "gan_fonts.py", line 11, in <module>
+    import tensorflow as tf
+  File "/home/deeplearner/Documents/Other/Wgan/local/lib/python2.7/site-packages/tensorflow/__init__.py", line 24, in <module>
+    from tensorflow.python import *
+  File "/home/deeplearner/Documents/Other/Wgan/local/lib/python2.7/site-packages/tensorflow/python/__init__.py", line 72, in <module>
+    raise ImportError(msg)
+ImportError: Traceback (most recent call last):
+  File "/home/deeplearner/Documents/Other/Wgan/local/lib/python2.7/site-packages/tensorflow/python/__init__.py", line 61, in <module>
+    from tensorflow.python import pywrap_tensorflow
+  File "/home/deeplearner/Documents/Other/Wgan/local/lib/python2.7/site-packages/tensorflow/python/pywrap_tensorflow.py", line 28, in <module>
+    _pywrap_tensorflow = swig_import_helper()
+  File "/home/deeplearner/Documents/Other/Wgan/local/lib/python2.7/site-packages/tensorflow/python/pywrap_tensorflow.py", line 24, in swig_import_helper
+    _mod = imp.load_module('_pywrap_tensorflow', fp, pathname, description)
+ImportError: libcudart.so.8.0: cannot open shared object file: No such file or directory
+
+
+Failed to load the native TensorFlow runtime.
+
+See https://github.com/tensorflow/tensorflow/blob/master/tensorflow/g3doc/get_started/os_setup.md#import_error
+
+for some common reasons and solutions.  Include the entire stack trace
+above this error message when asking for help.
+I tensorflow/stream_executor/dso_loader.cc:135] successfully opened CUDA library libcublas.so.8.0 locally
+I tensorflow/stream_executor/dso_loader.cc:135] successfully opened CUDA library libcudnn.so.5 locally
+I tensorflow/stream_executor/dso_loader.cc:135] successfully opened CUDA library libcufft.so.8.0 locally
+I tensorflow/stream_executor/dso_loader.cc:135] successfully opened CUDA library libcuda.so.1 locally
+I tensorflow/stream_executor/dso_loader.cc:135] successfully opened CUDA library libcurand.so.8.0 locally
+W tensorflow/core/platform/cpu_feature_guard.cc:45] The TensorFlow library wasn't compiled to use SSE3 instructions, but these are available on your machine and could speed up CPU computations.
+W tensorflow/core/platform/cpu_feature_guard.cc:45] The TensorFlow library wasn't compiled to use SSE4.1 instructions, but these are available on your machine and could speed up CPU computations.
+W tensorflow/core/platform/cpu_feature_guard.cc:45] The TensorFlow library wasn't compiled to use SSE4.2 instructions, but these are available on your machine and could speed up CPU computations.
+I tensorflow/stream_executor/cuda/cuda_gpu_executor.cc:910] successful NUMA node read from SysFS had negative value (-1), but there must be at least one NUMA node, so returning NUMA node zero
+I tensorflow/core/common_runtime/gpu/gpu_device.cc:885] Found device 0 with properties: 
+name: Tesla K40c
+major: 3 minor: 5 memoryClockRate (GHz) 0.745
+pciBusID 0000:04:00.0
+Total memory: 11.17GiB
+Free memory: 11.10GiB
+I tensorflow/core/common_runtime/gpu/gpu_device.cc:906] DMA: 0 
+I tensorflow/core/common_runtime/gpu/gpu_device.cc:916] 0:   Y 
+I tensorflow/core/common_runtime/gpu/gpu_device.cc:975] Creating TensorFlow device (/gpu:0) -> (device: 0, name: Tesla K40c, pci bus id: 0000:04:00.0)
+WARNING:tensorflow:From gan_fonts.py:231: initialize_all_variables (from tensorflow.python.ops.variables) is deprecated and will be removed after 2017-03-02.
+Instructions for updating:
+Use `tf.global_variables_initializer` instead.

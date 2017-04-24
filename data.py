@@ -38,8 +38,8 @@ class Data():
 		self.randomize_labels()
 		batch_labels = np.zeros((self.batch_size, self.num_classes))
 		batch_labels[np.arange(self.batch_size), self.char_labels] = 1
-		images = np.array([self.fonts[self.font_labels[i]][self.char_labels[i]] for i in range(self.batch_size)])
-		return np.reshape(images, (self.batch_size, -1)), batch_labels
+		images = np.array([self.fonts[self.font_labels[i]][self.char_labels[i]] for i in range(self.batch_size)], dtype=np.float32)
+		return np.reshape(images, (self.batch_size, -1))/255, batch_labels
 
 	def serve_latent(self):
 		"""
